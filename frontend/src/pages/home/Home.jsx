@@ -1,16 +1,16 @@
 import { useReducer, useEffect, axios } from '../../utils/import';
 import Title from '../../components/shared/title/Title';
-import HomePageReducer from '../../reducers/HomePageReducer';
+import fetchReducer from '../../reducers/fetchReducer';
 import Loading from '../../components/shared/loading/Loading';
 import MessageBox from '../../components/shared/messageBox/MessageBox';
-import Products from '../../components/homepage/products/Products';
+import Products from './Products';
 import { GET_FAIL, GET_REQUEST, GET_SUCCESS } from '../../actions/Action';
 
 const initialState = { loading: true, error: '', data: [] };
 
 const Home = () => {
   const [{ loading, error, data }, dispatch] = useReducer(
-    HomePageReducer,
+    fetchReducer,
     initialState
   );
   useEffect(() => {
@@ -27,8 +27,9 @@ const Home = () => {
     getProducts();
   }, []);
   return (
-    <div className="d-flex flex-column gap-3">
+    <>
       <Title title="Home Page" />
+      {/* <div className="d-flex flex-column gap-3"> */}
       <div className="backroundHomePage">
         <img
           width={'100%'}
@@ -36,16 +37,19 @@ const Home = () => {
           alt="backround-img"
         />
       </div>
-      <div className="products d-flex justify-content-center">
+      <div className="products">
         {loading ? (
-          <Loading />
+          <div>
+            <Loading />
+          </div>
         ) : error ? (
           <MessageBox variant="danger">{error}</MessageBox>
         ) : (
           <Products products={data}></Products>
         )}
       </div>
-    </div>
+      {/* </div> d-flex justify-content-center */}
+    </>
   );
 };
 

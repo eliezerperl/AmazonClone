@@ -6,17 +6,22 @@ import {
   LinkContainer,
   Link,
   NavDropdown,
+  Badge,
 } from '../../../utils/import';
 import { useStoreContext } from '../../../utils/Store';
 import { USER_SIGNOUT } from '../../../actions/Action';
 
 const Header = () => {
   const { state, dispatch } = useStoreContext();
-  const { userInfo } = state;
+  const {
+    userInfo,
+    cart: { cartItems },
+  } = state;
 
   const signoutHandler = () => {
     dispatch({ type: USER_SIGNOUT });
     localStorage.removeItem('userInfo');
+    localStorage.removeItem('cartItems');
   };
 
   return (
@@ -38,12 +43,17 @@ const Header = () => {
           <nav className="d-flex align-items-center justify-content-end me-2 ms-4 gap-2">
             <Link to={'/cart'} className="nav-link">
               <i className="fas fa-shopping-cart text-white"></i>
+              {cartItems.length > 0 && (
+                <Badge pill bg="danger">
+                  {cartItems.reduce((a, c) => a + c.quantity, 0)}
+                </Badge>
+              )}
             </Link>
             {userInfo ? (
               <NavDropdown className="text-white" title={userInfo.name}>
-                <div className='text-center'>{userInfo.name}</div>
+                <div className="text-center">{userInfo.name}</div>
                 <NavDropdown.Divider />
-                <div className='text-center'>
+                <div className="text-center">
                   <Link
                     to={'#signedout'}
                     onClick={signoutHandler}

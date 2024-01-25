@@ -1,5 +1,5 @@
-import { PropTypes, Row, Col } from '../../../utils/import';
-import Product from '../product/Product';
+import { PropTypes, Row, Col } from '../../utils/import';
+import Product from './Product';
 
 const Products = ({ products }) => {
   return (

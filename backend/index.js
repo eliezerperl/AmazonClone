@@ -24,12 +24,7 @@ app.use((err, req, res, next) => {
   res.status(500).send({ message: err.message })
 });
 
-// //test
-// app.post('/addUser', async(req, res) => {
-//   const {user} = req.body;
-//   const newUser = await User.create(user);
-//   res.send(newUser);
-// })
+
 
 mongoose.connect(process.env.MONGO)
 .then(() => {

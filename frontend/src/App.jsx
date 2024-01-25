@@ -3,10 +3,11 @@ import './App.css';
 import 'react-toastify/dist/ReactToastify.css';
 import Footer from './components/shared/footer/Footer';
 import Header from './components/shared/header/Header';
+import { ToastContainer } from 'react-toastify';
 import Home from './pages/home/Home';
 import SignIn from './pages/signin/SignIn';
 import SignUp from './pages/signup/SignUp';
-import { ToastContainer } from 'react-toastify';
+import Description from './pages/description/Description';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
                 <Route path="/" element={<Home />}></Route>
                 <Route path="/signin" element={<SignIn />}></Route>
                 <Route path="/signup" element={<SignUp />}></Route>
+                <Route path="/product/:token" element={<Description />}></Route>
               </Routes>
             </Container>
           </main>
