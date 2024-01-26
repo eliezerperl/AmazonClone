@@ -1,7 +1,7 @@
 import { useStoreContext } from '../../utils/Store';
 import { Card, Link, Button, PropTypes } from '../../utils/import';
 import { addToCartHandler } from '../../utils/utils';
-import Rating from '../../components/shared/rating/Rating';
+import Rating from '../shared/rating/Rating';
 
 const Product = ({ product }) => {
   const { state, dispatch } = useStoreContext();

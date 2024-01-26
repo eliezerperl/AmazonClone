@@ -1,4 +1,3 @@
-import React from 'react';
 import SearchBox from '../searchBox/SearchBox';
 import {
   NaVBar,
@@ -7,9 +6,12 @@ import {
   Link,
   NavDropdown,
   Badge,
+  useLocation,
 } from '../../../utils/import';
 import { useStoreContext } from '../../../utils/Store';
 import { USER_SIGNOUT } from '../../../actions/Action';
+import BackBtn from '../backBtn/BackBtn';
+import './Header.css';
 
 const Header = () => {
   const { state, dispatch } = useStoreContext();
@@ -17,6 +19,7 @@ const Header = () => {
     userInfo,
     cart: { cartItems },
   } = state;
+  const location = useLocation();
 
   const signoutHandler = () => {
     dispatch({ type: USER_SIGNOUT });
@@ -27,8 +30,9 @@ const Header = () => {
   return (
     <header>
       <NaVBar bg="dark" variant="dark">
+        {location.pathname !== '/' && <BackBtn />}
         <Container>
-          <nav className="d-flex align-items-center justify-content-end me-2 ms-4 gap-2">
+          <nav className="d-flex gap-2">
             <LinkContainer to={'/'}>
               <NaVBar.Brand>
                 <img
@@ -40,7 +44,7 @@ const Header = () => {
             </LinkContainer>
             <SearchBox />
           </nav>
-          <nav className="d-flex align-items-center justify-content-end me-2 ms-4 gap-2">
+          <nav className="d-flex gap-2">
             <Link to={'/cart'} className="nav-link">
               <i className="fas fa-shopping-cart text-white"></i>
               {cartItems.length > 0 && (
