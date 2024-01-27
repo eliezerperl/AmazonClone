@@ -2,12 +2,13 @@ version: '3.8'
 
 services:
   frontend:
-    image: eliezerperl/frontend
+    image: eliezerperl/frontend:${TAG}
     build: ./frontend
+      
     ports:
       - 5173:5173
   backend:
-    image: eliezerperl/backend
+    image: eliezerperl/backend:${TAG}
     build: ./backend
     ports:
       - 8080:8080

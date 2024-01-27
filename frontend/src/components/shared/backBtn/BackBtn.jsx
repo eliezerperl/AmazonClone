@@ -1,5 +1,5 @@
 import { useNavigate } from '../../../utils/import';
-import './backBtn.css';
+import './BackBtn.css';
 
 const BackBtn = () => {
   const navigate = useNavigate();
