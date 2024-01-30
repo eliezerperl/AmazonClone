@@ -20,6 +20,8 @@ const Header = () => {
     cart: { cartItems },
   } = state;
   const location = useLocation();
+  // const redirectInUrl = new URLSearchParams(location.search).get('redirect');
+  // const redirect = redirectInUrl ? redirectInUrl : '/';
 
   const signoutHandler = () => {
     dispatch({ type: USER_SIGNOUT });
@@ -55,19 +57,18 @@ const Header = () => {
             </Link>
             {userInfo ? (
               <NavDropdown className="text-white" title={userInfo.name}>
-                <div className="text-center">{userInfo.name}</div>
+                <div className="text-center user-name">{userInfo.name}</div>
                 <NavDropdown.Divider />
-                <div className="text-center">
-                  <Link
-                    to={'#signedout'}
+                <span className="d-flex justify-content-center">
+                  <div
                     onClick={signoutHandler}
-                    className="dropdown item">
+                    className="dropdown item signout">
                     Sign out
-                  </Link>
-                </div>
+                  </div>
+                </span>
               </NavDropdown>
             ) : (
-              <Link to={'/signin'} className="text-white nav-link">
+              <Link to={`/signin`} className="text-white nav-link">
                 Sign in
               </Link>
             )}

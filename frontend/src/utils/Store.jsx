@@ -1,4 +1,4 @@
-import React, { createContext, useContext } from 'react';
+import { createContext, useContext } from 'react';
 import { useReducer, PropTypes } from '../utils/import';
 import StoreReducer from '../reducers/StoreReducer';
 
@@ -26,7 +26,8 @@ export const StoreProvider = ({ children }) => {
 };
 
 StoreProvider.propTypes = {
-  childrem: PropTypes.node,
+  children: PropTypes.node,
 };
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const useStoreContext = () => useContext(StoreContext);

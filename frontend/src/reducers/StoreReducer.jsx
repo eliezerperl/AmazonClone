@@ -1,4 +1,4 @@
-import { ADD_TO_CART, USER_SIGNIN, USER_SIGNOUT } from '../actions/Action';
+import { UPDATE_CART, USER_SIGNIN, USER_SIGNOUT } from '../actions/Action';
 
 const StoreReducer = (state, action) => {
   switch (action.type) {
@@ -11,7 +11,7 @@ const StoreReducer = (state, action) => {
         cart: { cartItems: [], shippingAdress: {}, paymentMethod: '' },
       };
 
-    case ADD_TO_CART:
+    case UPDATE_CART:
       return { ...state, cart: { cartItems: action.payload } };
 
     default:

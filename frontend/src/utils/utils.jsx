@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { ADD_TO_CART } from '../actions/Action';
+import { UPDATE_CART } from '../actions/Action';
 
 export const getError = (err) => {
   return err.message && err.response.data.message
@@ -12,10 +12,8 @@ export const addToCartHandler = async (product, cartItems, dispatch) => {
 
   const existingItem = cartItems.find((prod) => prod._id === product._id);
 
-  console.log(data.countInStock);
-
   if (existingItem && data.countInStock === existingItem.quantity) {
-    alert('Therre are no more items in stock');
+    alert('There are no more items in stock');
     return;
   }
 
@@ -26,24 +24,54 @@ export const addToCartHandler = async (product, cartItems, dispatch) => {
       ...product,
       quantity: existingItem.quantity + 1,
     };
-    console.log(true);
   } else {
     updatedProduct = { ...product, quantity: 1 };
     cartItems.push(updatedProduct);
-    console.log(false);
   }
+
   localStorage.setItem('cartItems', JSON.stringify(cartItems));
-  dispatch({ type: ADD_TO_CART, payload: [...cartItems] });
-  // try {
-  //   //fetch
+  dispatch({ type: UPDATE_CART, payload: [...cartItems] });
+};
 
-  //   if (data.countInStock < quantity) {
-  //     alert('Sorry, Product s out of stock');
-  //     return;
-  //   }
+export const deleteFromCartHandler = (product, cartItems, dispatch) => {
+  const existingItem = cartItems.find((prod) => prod._id === product._id);
 
-  //   dispatch({ type: ADD_TO_CART, payload: [...cartItems, updatedProduct] });
-  // } catch (error) {
-  //   console.log(error);
-  // }
+  const indexToUpdate = cartItems.indexOf(existingItem);
+
+  cartItems.splice(indexToUpdate, 1);
+
+  localStorage.setItem('cartItems', JSON.stringify(cartItems));
+  dispatch({ type: UPDATE_CART, payload: [...cartItems] });
+};
+
+export const minusFromCartHandler = (product, cartItems, dispatch) => {
+  const existingItem = cartItems.find((prod) => prod._id === product._id);
+
+  const indexToUpdate = cartItems.indexOf(existingItem);
+  if (existingItem.quantity > 1) {
+    cartItems[indexToUpdate] = {
+      ...product,
+      quantity: existingItem.quantity - 1,
+    };
+  } else {
+    cartItems.splice(indexToUpdate, 1);
+  }
+
+  localStorage.setItem('cartItems', JSON.stringify(cartItems));
+  dispatch({ type: UPDATE_CART, payload: [...cartItems] });
+};
+
+export const updateCartHandler = (product, cartItems, newQty) => {
+  const indexToUpdate = cartItems.indexOf(product);
+
+  if (product.quantity > 1) {
+    cartItems[indexToUpdate] = {
+      ...product,
+      quantity: newQty,
+    };
+  } else {
+    cartItems.splice(indexToUpdate, 1);
+  }
+
+  localStorage.setItem('cartItems', JSON.stringify(cartItems));
 };

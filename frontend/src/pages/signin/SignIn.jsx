@@ -7,6 +7,8 @@ import {
   Button,
   Link,
   toast,
+  useLocation,
+  useEffect,
 } from '../../utils/import';
 import Title from '../../components/shared/title/Title.jsx';
 import { getError } from '../../utils/utils';
@@ -16,8 +18,17 @@ import { USER_SIGNIN } from '../../actions/Action';
 const SignIn = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const { state, dispatch } = useStoreContext();
+  const { userInfo } = state;
   const navigate = useNavigate();
-  const { dispatch } = useStoreContext();
+  const { search } = useLocation();
+
+  const redirectInUrl = new URLSearchParams(search).get('redirect');
+  const redirect = redirectInUrl ? redirectInUrl : '/';
+
+  useEffect(() => {
+    if (userInfo) navigate(redirect);
+  }, [navigate, redirect, userInfo]);
 
   const submitHandler = async (e) => {
     e.preventDefault();
@@ -28,15 +39,14 @@ const SignIn = () => {
         password,
       });
       dispatch({ type: USER_SIGNIN, payload: data });
-      console.log(data);
       localStorage.setItem('userInfo', JSON.stringify(data));
-      navigate('/');
+      navigate(redirect);
     } catch (error) {
       toast.error(getError(error));
     }
   };
   return (
-    <Container>
+    <Container className="small-container">
       <Title title="Sign In" />
       <h1 className="my-3">Sign In</h1>
       <Form onSubmit={submitHandler}>
@@ -59,7 +69,8 @@ const SignIn = () => {
           <Button type="submit">Sign in</Button>
         </div>
         <div className="mb-3">
-          New Customer? <Link to={'/signup'}>Create new account</Link>
+          New Customer?{' '}
+          <Link to={`/signup?redirect=${redirect}`}>Create new account</Link>
         </div>
         <div className="mb-3">
           Forgot you password? <Link to={'/forgot'}>Reset password</Link>

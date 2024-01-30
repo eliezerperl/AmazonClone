@@ -7,9 +7,10 @@ import {
   Container,
   Form,
   Button,
+  useNavigate,
+  useLocation,
 } from '../../utils/import';
 import { useStoreContext } from '../../utils/Store';
-import { useNavigate, useLocation } from 'react-router-dom';
 import { USER_SIGNIN } from '../../actions/Action';
 import { getError } from '../../utils/utils';
 import Title from '../../components/shared/title/Title';
@@ -24,11 +25,14 @@ const SignUp = () => {
 
   const { search } = useLocation();
   const redirectInUrl = new URLSearchParams(search).get('redirect');
-  console.log(redirectInUrl);
   const redirect = redirectInUrl ? redirectInUrl : '/';
 
   const { state, dispatch } = useStoreContext();
   const { userInfo } = state;
+
+  useEffect(() => {
+    if (userInfo) navigate(redirect);
+  }, [navigate, redirect, userInfo]);
 
   const submitHandler = async (e) => {
     e.preventDefault();
@@ -52,12 +56,6 @@ const SignUp = () => {
       toast.error(getError(err));
     }
   };
-
-  useEffect(() => {
-    if (userInfo) {
-      navigate(redirect);
-    }
-  }, [navigate, redirect, userInfo]);
 
   return (
     <Container className="small-container">
@@ -100,7 +98,8 @@ const SignUp = () => {
           <Button type="submit">Sign Up</Button>
         </div>
         <div className="mb-3">
-          Already have an account? <Link to={`/signin`}>Sign in</Link>
+          Already have an account?{' '}
+          <Link to={`/signin?redirect=${redirect}`}>Sign in</Link>
         </div>
       </Form>
     </Container>

@@ -1,0 +1,19 @@
+.edit-symbol {
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.edit-symbol:hover {
+  background-color: gray;
+}
+
+.item-quantity {
+  border: 2px solid gray;
+  border-radius: 5px;
+  cursor: default;
+}
+
+.prod-navigator {
+  cursor: pointer;
+}
