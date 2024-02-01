@@ -4,15 +4,15 @@ import StoreReducer from '../reducers/StoreReducer';
 
 const user = localStorage.getItem('userInfo');
 const items = localStorage.getItem('cartItems');
-const shippingAdress = localStorage.getItem('shippingAddress');
+const shippingAddress = localStorage.getItem('shippingAddress');
 const paymentMethod = localStorage.getItem('paymentMethod');
 
 const initialState = {
   userInfo: user ? JSON.parse(user) : null,
   cart: {
     cartItems: items ? JSON.parse(items) : [],
-    shippingAddress: shippingAdress ? JSON.parse(shippingAdress) : {},
-    paymentMethod: paymentMethod ? JSON.parse(paymentMethod) : '',
+    shippingAddress: shippingAddress ? JSON.parse(shippingAddress) : {},
+    paymentMethod: paymentMethod ? paymentMethod : '',
   },
 };
 

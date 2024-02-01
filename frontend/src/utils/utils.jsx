@@ -61,17 +61,3 @@ export const minusFromCartHandler = (product, cartItems, dispatch) => {
   dispatch({ type: UPDATE_CART, payload: [...cartItems] });
 };
 
-export const updateCartHandler = (product, cartItems, newQty) => {
-  const indexToUpdate = cartItems.indexOf(product);
-
-  if (product.quantity > 1) {
-    cartItems[indexToUpdate] = {
-      ...product,
-      quantity: newQty,
-    };
-  } else {
-    cartItems.splice(indexToUpdate, 1);
-  }
-
-  localStorage.setItem('cartItems', JSON.stringify(cartItems));
-};

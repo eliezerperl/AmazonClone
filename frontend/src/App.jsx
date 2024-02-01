@@ -10,6 +10,7 @@ import SignUp from './pages/signup/SignUp';
 import Description from './pages/description/Description';
 import Cart from './pages/cart/Cart';
 import Shipping from './pages/shipping/Shipping';
+import Payment from './pages/payment/Payment';
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
                 <Route path="/product/:token" element={<Description />}></Route>
                 <Route path="/cart" element={<Cart />}></Route>
                 <Route path="/shipping" element={<Shipping />}></Route>
+                <Route path="/payment" element={<Payment />}></Route>
               </Routes>
             </Container>
           </main>

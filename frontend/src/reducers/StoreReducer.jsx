@@ -1,4 +1,5 @@
 import {
+  SAVE_PAYMENT_METHOD,
   SAVE_SHIPPING_ADDRESS,
   UPDATE_CART,
   USER_SIGNIN,
@@ -13,14 +14,22 @@ const StoreReducer = (state, action) => {
       return {
         ...state,
         userInfo: null,
-        cart: { cartItems: [], shippingAdress: {}, paymentMethod: '' },
+        cart: { cartItems: [], shippingAddress: {}, paymentMethod: '' },
       };
 
     case UPDATE_CART:
-      return { ...state, cart: { cartItems: action.payload } };
+      return { ...state, cart: { ...state.cart, cartItems: action.payload } };
 
     case SAVE_SHIPPING_ADDRESS:
-      return { ...state, cart: { shippingAdress: action.payload } };
+      return {
+        ...state,
+        cart: { ...state.cart, shippingAddress: action.payload },
+      };
+    case SAVE_PAYMENT_METHOD:
+      return {
+        ...state,
+        cart: { ...state.cart, paymentMethod: action.payload },
+      };
 
     default:
       return { ...state };

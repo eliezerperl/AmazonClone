@@ -8,7 +8,6 @@ import {
   useNavigate,
 } from '../../utils/import';
 import { useStoreContext } from '../../utils/Store';
-import './Shipping.css';
 import { SAVE_SHIPPING_ADDRESS } from '../../actions/Action';
 
 const Shipping = () => {
@@ -42,7 +41,7 @@ const Shipping = () => {
       <CheckoutSteps step1 step2 />
       <div className="steps"></div>
       <Container className="small-container d-flex flex-column gap-4">
-        <h1 className="shipping-address-title">Shipping Address</h1>
+        <h1 className="steps-title text-center">Shipping Address</h1>
         <Form onSubmit={submitHandler} className="d-flex flex-column gap-3">
           <Form.Group>
             <Form.Label>Full Name:</Form.Label>
@@ -64,11 +63,9 @@ const Shipping = () => {
             <Form.Label>Country:</Form.Label>
             <Form.Control name="country" required></Form.Control>
           </Form.Group>
-          <div className="mb-3">
-            <Button type="submit" variant="primary">
-              Continue
-            </Button>
-          </div>
+          <Button type="submit" variant="primary">
+            Continue
+          </Button>
         </Form>
       </Container>
     </div>

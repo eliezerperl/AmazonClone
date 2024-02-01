@@ -21,11 +21,12 @@ const Header = () => {
   } = state;
   const location = useLocation();
 
-
   const signoutHandler = () => {
     dispatch({ type: USER_SIGNOUT });
     localStorage.removeItem('userInfo');
     localStorage.removeItem('cartItems');
+    localStorage.removeItem('shippingAddress');
+    localStorage.removeItem('paymentMethod');
   };
 
   return (
