@@ -11,6 +11,7 @@ import Description from './pages/description/Description';
 import Cart from './pages/cart/Cart';
 import Shipping from './pages/shipping/Shipping';
 import Payment from './pages/payment/Payment';
+import SubmitOrder from './pages/submitOrder/SubmitOrder';
 
 function App() {
   return (
@@ -29,6 +30,8 @@ function App() {
                 <Route path="/cart" element={<Cart />}></Route>
                 <Route path="/shipping" element={<Shipping />}></Route>
                 <Route path="/payment" element={<Payment />}></Route>
+                <Route path="/placeorder" element={<SubmitOrder />}></Route>
+                {/* <Route path="/orders/:id" element={<Order />}></Route> */}
               </Routes>
             </Container>
           </main>

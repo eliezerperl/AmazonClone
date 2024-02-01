@@ -25,7 +25,7 @@ const CartSummary = ({ cartItems, checkoutHandler }) => {
                 Subtotal:{' '}
                 {totalItems === 0 ? '(No items)' : `(${totalItems} items)`}
               </Col>
-              <Col md={4}> {amountToPay.toFixed(2)}$</Col>
+              <Col md={4}> ${amountToPay.toFixed(2)}</Col>
             </Row>
           </ListGroup.Item>
           <ListGroup.Item>

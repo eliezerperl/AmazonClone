@@ -1,4 +1,5 @@
 import {
+  CLEAR_CART,
   SAVE_PAYMENT_METHOD,
   SAVE_SHIPPING_ADDRESS,
   UPDATE_CART,
@@ -19,6 +20,8 @@ const StoreReducer = (state, action) => {
 
     case UPDATE_CART:
       return { ...state, cart: { ...state.cart, cartItems: action.payload } };
+    case CLEAR_CART:
+      return { ...state, cart: { ...state.cart, cartItems: [] } };
 
     case SAVE_SHIPPING_ADDRESS:
       return {

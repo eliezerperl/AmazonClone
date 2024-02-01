@@ -25,7 +25,7 @@ const CartProduct = ({ item, cartItems, navigateToProd }) => {
             onClick={() => navigateToProd(item)}>
             {item.title}
           </span>
-          <span>{item.price}$</span>
+          <span>${item.price}</span>
         </div>
       </Col>
       <Col xs={6} md={2} className="d-flex flex-column">
