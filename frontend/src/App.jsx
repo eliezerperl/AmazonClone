@@ -9,6 +9,7 @@ import SignIn from './pages/signin/SignIn';
 import SignUp from './pages/signup/SignUp';
 import Description from './pages/description/Description';
 import Cart from './pages/cart/Cart';
+import Shipping from './pages/shipping/Shipping';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
                 <Route path="/signup" element={<SignUp />}></Route>
                 <Route path="/product/:token" element={<Description />}></Route>
                 <Route path="/cart" element={<Cart />}></Route>
+                <Route path="/shipping" element={<Shipping />}></Route>
               </Routes>
             </Container>
           </main>

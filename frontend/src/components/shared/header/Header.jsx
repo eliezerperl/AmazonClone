@@ -20,8 +20,7 @@ const Header = () => {
     cart: { cartItems },
   } = state;
   const location = useLocation();
-  // const redirectInUrl = new URLSearchParams(location.search).get('redirect');
-  // const redirect = redirectInUrl ? redirectInUrl : '/';
+
 
   const signoutHandler = () => {
     dispatch({ type: USER_SIGNOUT });

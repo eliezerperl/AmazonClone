@@ -27,7 +27,7 @@ const Home = () => {
     getProducts();
   }, []);
   return (
-    <>
+    <div>
       <Title title="Home Page" />
       {/* <div className="d-flex flex-column gap-3"> */}
       <div className="backroundHomePage">
@@ -39,9 +39,7 @@ const Home = () => {
       </div>
       <div className="products">
         {loading ? (
-          <div>
-            <Loading />
-          </div>
+          <Loading />
         ) : error ? (
           <MessageBox variant="danger">{error}</MessageBox>
         ) : (
@@ -49,7 +47,7 @@ const Home = () => {
         )}
       </div>
       {/* </div> d-flex justify-content-center */}
-    </>
+    </div>
   );
 };
 
