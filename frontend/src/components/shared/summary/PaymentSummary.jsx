@@ -43,16 +43,20 @@ const PaymentSummary = ({ loading, cart, status, submitOrderHandler }) => {
                 </Col>
               </Row>
             </ListGroup.Item>
-            <ListGroup.Item>
-              <Row>
-                {status === 'submitOrder' && (
-                  <Button variant="primary" onClick={submitOrderHandler}>
-                    Submit
-                  </Button>
-                )}
-                {loading && <Loading />}
+            {/* <ListGroup.Item> */}
+            {status === 'submitOrder' && (
+              <Row className="mt-3">
+                <Button variant="primary" onClick={submitOrderHandler}>
+                  Submit
+                </Button>
               </Row>
-            </ListGroup.Item>
+            )}
+            {loading && (
+              <div className="d-flex justify-content-center">
+                <Loading />
+              </div>
+            )}
+            {/* </ListGroup.Item> */}
           </ListGroup>
         </Card.Body>
       </Card>

@@ -64,18 +64,18 @@ const OrderSummary = ({ cart, status, isDelivered }) => {
               <ListGroup.Item key={item._id}>
                 <Row>
                   <Col>
-                    <Link to={'`product/${item.token}`'}>
+                    {/* <Link to={`product/${item.token}`}> */}
                       <img
                         src={item.image}
                         alt={`${item.title} image`}
                         className="img-fluid rounded img-thumbnail"
                       />
-                    </Link>
+                    {/* </Link> */}
                   </Col>
                   <Col>
-                    <Link className="text-center" to={`product/${item.token}`}>
+                    {/* <Link className="text-center" to={`product/${item.token}`}> */}
                       {item.title}
-                    </Link>
+                    {/* </Link> */}
                   </Col>
                   <Col>
                     <span>${item.price}</span>
