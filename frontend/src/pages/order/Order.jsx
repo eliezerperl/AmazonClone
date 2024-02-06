@@ -25,6 +25,7 @@ const Order = () => {
     };
     fetchData();
   }, [urlParams.id, userInfo.token]);
+
   let modifiedOrder;
   if (order) {
     modifiedOrder = {
@@ -36,13 +37,13 @@ const Order = () => {
 
   return (
     <Row>
-      {order ? (
+      {order && (
         <>
           <h1 className="text-center">Order: {order._id}</h1>
           <Col md={8}>
             <OrderSummary
               cart={modifiedOrder}
-              status={'unpaid'}
+              status={order.isPaid && 'paid'}
               isDelivered={order.isDelivered}
             />
           </Col>
@@ -50,19 +51,7 @@ const Order = () => {
             <PaymentSummary cart={order} />
           </Col>
         </>
-      ) : (
-        <>there is not an order</>
       )}
-      {/* <Col md={8}>
-        {order.shippingAddress.fullName}
-        <OrderSummary
-          cart={order}
-          status={'unpaid'}
-          isDelivered={order.isDelivered}
-        />
-        Hello
-      </Col>
-      <Col md={4}>There</Col> */}
     </Row>
   );
 };

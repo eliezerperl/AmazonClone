@@ -13,6 +13,7 @@ import Shipping from './pages/shipping/Shipping';
 import Payment from './pages/payment/Payment';
 import SubmitOrder from './pages/submitOrder/SubmitOrder';
 import Order from './pages/order/Order';
+import Search from './pages/search/search';
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
                 <Route path="/payment" element={<Payment />}></Route>
                 <Route path="/placeorder" element={<SubmitOrder />}></Route>
                 <Route path="/orders/:id" element={<Order />}></Route>
+                <Route path="/search" element={<Search />}></Route>
               </Routes>
             </Container>
           </main>
