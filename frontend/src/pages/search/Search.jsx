@@ -74,7 +74,6 @@ const Search = () => {
         const { data } = await axios.get(
           `api/v1/products/search?category=${category}&query=${query}&price=${price}&rating=${rating}&order=${order}&page=${page}`
         );
-        console.log(data);
         dispatch({ type: GET_SEARCH_SUCCESS, payload: data });
       } catch (error) {
         dispatch({ type: GET_FAIL, payload: getError(error) });
@@ -88,9 +87,9 @@ const Search = () => {
     <>
       <Title title="Search"></Title>
       <Row>
-        <Col md={3}>
-          <h3>Categories:</h3>
-          <div>
+        <Col md={2} className="d-flex flex-column gap-5">
+          <section>
+            <h3>Categories:</h3>
             <ul>
               <li>
                 <Link
@@ -107,10 +106,10 @@ const Search = () => {
                 </li>
               ))}
             </ul>
-          </div>
+          </section>
 
-          <h3>Price:</h3>
-          <div>
+          <section>
+            <h3>Price:</h3>
             <ul>
               <li>
                 <Link
@@ -129,38 +128,38 @@ const Search = () => {
                 </li>
               ))}
             </ul>
-          </div>
+          </section>
 
-          <h3>Reviews:</h3>
-          <div>
+          <section>
+            <h3>Reviews:</h3>
             <ul>
               {ratings.map((ratingLocal) => (
                 <li key={ratingLocal.rating}>
                   <Link
                     className={'all' === price ? 'text-bold' : ''}
                     to={getFilterURI(search, { rating: ratingLocal.rating })}>
-                    <Rating rating={ratingLocal.rating} caption={' '} />
+                    <Rating rating={ratingLocal.rating} />
                   </Link>
                 </li>
               ))}
             </ul>
-          </div>
+          </section>
         </Col>
 
-        <Col md={9}>
+        <Col md={10}>
           {loading ? (
             <Loading />
           ) : error ? (
             <MessageBox variant="danger">{error}</MessageBox>
           ) : (
-            <>
+            <div className="d-flex flex-column gap-3">
               <Row>
-                <Col md={6}>
-                  <div>
+                <Col className="d-flex justify-content-between">
+                  <span>
                     {countProducts === 0 ? 'No ' : countProducts} Results
                     {query !== 'all' && ' : ' + query}
                     {category !== 'all' && ' : ' + category}
-                    {price !== 'all' && ' : Price ' + price}
+                    {price !== 'all' && ` : Price $${price.split('-')[0]}-$${price.split('-')[1]}`}
                     {rating !== 'all' && ' : Rating ' + rating + ' & up'}
                     {query !== 'all' ||
                     category !== 'all' ||
@@ -182,20 +181,23 @@ const Search = () => {
                         className="fas fa-times-circle edit-symbol"
                       />
                     ) : null}
-                  </div>
-                </Col>
-                <Col className="text-end">
-                  Sort by{' '}
-                  <select
-                    value={order}
-                    onChange={(e) => {
-                      navigate(getFilterURI(search, { order: e.target.value }));
-                    }}>
-                    <option value="newest">Newest Arrivals</option>
-                    <option value="lowest">Price: Low to High</option>
-                    <option value="highest">Price: High to Low</option>
-                    <option value="toprated">Customer Reviews</option>
-                  </select>
+                  </span>
+
+                  <span>
+                    Sort by{' '}
+                    <select
+                      value={order}
+                      onChange={(e) => {
+                        navigate(
+                          getFilterURI(search, { order: e.target.value })
+                        );
+                      }}>
+                      <option value="newest">Newest Arrivals</option>
+                      <option value="lowest">Price: Low to High</option>
+                      <option value="highest">Price: High to Low</option>
+                      <option value="toprated">Customer Reviews</option>
+                    </select>
+                  </span>
                 </Col>
               </Row>
               {products.length === 0 && (
@@ -228,7 +230,7 @@ const Search = () => {
                   </LinkContainer>
                 ))}
               </div>
-            </>
+            </div>
           )}
         </Col>
       </Row>

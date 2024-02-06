@@ -2,7 +2,7 @@ import { PropTypes } from '../../../utils/import';
 
 const Rating = ({ rating, numReviews, caption }) => {
   return (
-    <div className="rating">
+    <span className="rating">
       <span>
         <i
           className={
@@ -55,10 +55,10 @@ const Rating = ({ rating, numReviews, caption }) => {
       </span>
       {caption ? (
         <span>{caption}</span>
-      ) : (
+      ) : numReviews ? (
         <span>{' ' + numReviews + ' reviews'}</span>
-      )}
-    </div>
+      ) : null}
+    </span>
   );
 };
 
