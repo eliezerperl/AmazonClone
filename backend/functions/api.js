@@ -14,7 +14,7 @@ dotenv.config();
 
 const app = express();
 app.use(cors()); // does nothing at the moment
-app.use(express.json()); // parses JSONs
+app.use(express.json()); // parses JSON
 app.use(express.urlencoded({ extended: false }));
 
 // const router = express.Router();
