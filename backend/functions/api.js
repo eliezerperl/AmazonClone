@@ -5,7 +5,7 @@ import cors from 'cors';
 
 import dotenv from 'dotenv';
 import productRouter from '../routes/productRouter';
-import seedRouter from '../routes/seedRouter';
+// import seedRouter from '../routes/seedRouter';
 import userRouter from '../routes/userRouter';
 import orderRouter from '../routes/orderRouter';
 
@@ -24,7 +24,7 @@ app.use(express.urlencoded({ extended: false }));
 // app.use('/.netlify/functions/api', router);
 //middleware
 //routes:
-app.use('/.netlify/functions/api/v1/seed', seedRouter);
+// app.use('/.netlify/functions/api/v1/seed', seedRouter);
 app.use('/.netlify/functions/api/v1/products', productRouter);
 app.use('/.netlify/functions/api/v1/users', userRouter);
 app.use('/.netlify/functions/api/v1/orders', orderRouter);
