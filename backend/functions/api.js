@@ -5,7 +5,7 @@ import cors from 'cors';
 
 import dotenv from 'dotenv';
 import productRouter from '../routes/productRouter';
-// import seedRouter from '../routes/seedRouter';
+import seedRouter from '../routes/seedRouter';
 import userRouter from '../routes/userRouter';
 import orderRouter from '../routes/orderRouter';
 
