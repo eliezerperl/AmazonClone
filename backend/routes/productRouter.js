@@ -9,7 +9,7 @@ import {
 } from '../controllers/productController.js';
 
 const productRouter = express.Router();
-productRouter.get('/', getProducts);
+productRouter.get('/', expressAsyncHandler(getProducts));
 productRouter.get('/categories', expressAsyncHandler(getCategories));
 productRouter.get('/search', expressAsyncHandler(getSearchedItems));
 

@@ -24,7 +24,7 @@ router.get('/', (req, res) => {
 app.use('/.netlify/functions/api', router);
 //middleware
 //routes:
-app.use('/.netlify/functions/api/v1/seed', seedRouter);
+// app.use('/.netlify/functions/api/v1/seed', seedRouter);
 app.use('/.netlify/functions/api/v1/products', productRouter);
 app.use('/.netlify/functions/api/v1/users', userRouter);
 app.use('/.netlify/functions/api/v1/orders', orderRouter);
