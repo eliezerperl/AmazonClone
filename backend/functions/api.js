@@ -19,10 +19,10 @@ app.use(express.urlencoded({ extended: false }));
 
 //middleware
 //routes:
-app.use('/.nelify/functions/api/api/v1/seed', seedRouter);
-app.use('/.nelify/functions/api/api/v1/products', productRouter);
-app.use('/.nelify/functions/api/api/v1/users', userRouter);
-app.use('/.nelify/functions/api/api/v1/orders', orderRouter);
+app.use('/.netlify/functions/api/v1/seed', seedRouter);
+app.use('/.netlify/functions/api/v1/products', productRouter);
+app.use('/.netlify/functions/api/v1/users', userRouter);
+app.use('/.netlify/functions/api/v1/orders', orderRouter);
 app.use((err, req, res, next) => {
   res.status(500).send({ message: err.message });
 });
