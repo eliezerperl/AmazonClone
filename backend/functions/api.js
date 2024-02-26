@@ -28,9 +28,9 @@ app.use('/.netlify/functions/api', router);
 app.use('/.netlify/functions/api/v1/products', productRouter);
 app.use('/.netlify/functions/api/v1/users', userRouter);
 app.use('/.netlify/functions/api/v1/orders', orderRouter);
-app.use((err, req, res, next) => {
-  res.status(500).send({ message: err.message });
-});
+// app.use((err, req, res, next) => {
+//   res.status(500).send({ message: err.message });
+// });
 
 export const handler = serverless(app);
 
