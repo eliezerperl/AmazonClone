@@ -1,7 +1,7 @@
 import express from 'express';
 import serverless from 'serverless-http';
 import cors from 'cors';
-import mongoose from 'mongoose';
+// import mongoose from 'mongoose';
 
 import dotenv from 'dotenv';
 import productRouter from '../routes/productRouter';
