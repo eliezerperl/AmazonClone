@@ -1,4 +1,4 @@
-import express from 'express';
+import { Router } from 'express';
 import expressAsyncHandler from 'express-async-handler';
 import {
   getProducts,
@@ -8,7 +8,7 @@ import {
   getSearchedItems,
 } from '../controllers/productController.js';
 
-const productRouter = express.Router();
+const productRouter = Router();
 productRouter.get('/', expressAsyncHandler(getProducts));
 productRouter.get('/categories', expressAsyncHandler(getCategories));
 productRouter.get('/search', expressAsyncHandler(getSearchedItems));

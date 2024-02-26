@@ -1,4 +1,4 @@
-import express from 'express';
+import { Router } from 'express';
 import expressAsyncHandler from 'express-async-handler';
 import { isAuth } from '../utils/utils.js';
 import {
@@ -7,7 +7,7 @@ import {
   getUsersOrders,
 } from '../controllers/orderController.js';
 
-const orderRouter = express.Router();
+const orderRouter = Router();
 orderRouter.post('/', isAuth, expressAsyncHandler(addOrder));
 orderRouter.get('/myorders', isAuth, expressAsyncHandler(getUsersOrders));
 orderRouter.get('/:id', isAuth, expressAsyncHandler(getOrderById));

@@ -1,7 +1,7 @@
-import express from 'express';
+import { Router } from 'express';
 import seedData from '../controllers/seedController.js';
 
-const seedRouter = express.Router();
-seedRouter.get('/', () => seedData);
+const seedRouter = Router();
+seedRouter.get('/', seedData);
 
 export default seedRouter;
