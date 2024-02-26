@@ -58,6 +58,9 @@ const Header = () => {
             {userInfo ? (
               <NavDropdown className="text-white" title={userInfo.name}>
                 <div className="text-center user-name">{userInfo.name}</div>
+                <div className="text-center">
+                  <Link to={'/orders/myorders'}>My Orders</Link>
+                </div>
                 <NavDropdown.Divider />
                 <span className="d-flex justify-content-center">
                   <div

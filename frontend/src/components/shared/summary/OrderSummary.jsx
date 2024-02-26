@@ -6,6 +6,7 @@ import {
   Row,
   ListGroup,
 } from '../../../utils/import';
+import PayPalPayment from '../../payment/PayPalPayment';
 import MessageBox from '../messageBox/MessageBox';
 
 const OrderSummary = ({ cart, status, isDelivered }) => {
@@ -41,15 +42,19 @@ const OrderSummary = ({ cart, status, isDelivered }) => {
           <Card.Title>Payment Method</Card.Title>
         </Card.Header>
         <Card.Body>
-          <Card.Text>
-            <strong>Method: </strong>
-            {cart.paymentMethod}
+          <Card.Text className="d-flex justify-content-between">
+            <span>
+              <strong>Method: </strong>
+              {cart.paymentMethod}
+            </span>
+            <PayPalPayment cart={cart} />
+            {/* ternary if stripe  */}
           </Card.Text>
           {status === 'submitOrder' ? (
             <Link to={'/payment'}>Edit</Link>
           ) : status === 'paid' ? (
             <MessageBox variant={'success'}>Paid</MessageBox>
-            ) : (
+          ) : (
             <MessageBox variant={'danger'}>Not Paid</MessageBox>
           )}
         </Card.Body>
@@ -65,16 +70,16 @@ const OrderSummary = ({ cart, status, isDelivered }) => {
                 <Row>
                   <Col>
                     {/* <Link to={`product/${item.token}`}> */}
-                      <img
-                        src={item.image}
-                        alt={`${item.title} image`}
-                        className="img-fluid rounded img-thumbnail"
-                      />
+                    <img
+                      src={item.image}
+                      alt={`${item.title} image`}
+                      className="img-fluid rounded img-thumbnail"
+                    />
                     {/* </Link> */}
                   </Col>
                   <Col>
                     {/* <Link className="text-center" to={`product/${item.token}`}> */}
-                      {item.title}
+                    {item.title}
                     {/* </Link> */}
                   </Col>
                   <Col>

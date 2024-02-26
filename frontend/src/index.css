@@ -144,3 +144,11 @@ main {
   background-color: #f0c040 !important;
   color: #000000 !important;
 }
+
+.myorders-items-card {
+  min-width: 160px;
+}
+
+.myorders-card-body {
+  overflow-x: scroll;
+}

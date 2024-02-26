@@ -28,3 +28,14 @@ export const getOrderById = async (req, res) => {
     res.status(404).send({ message: 'Order not found' });
   }
 };
+
+export const getUsersOrders = async (req, res) => {
+  const orders = await Order.find({
+    user: req.user._id,
+  });
+  if (orders) {
+    res.status(200).send({ message: 'Orders found', orders });
+  } else {
+    res.status(404).send({ message: 'Orders not found' });
+  }
+};
