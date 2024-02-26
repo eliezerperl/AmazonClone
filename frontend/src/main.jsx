@@ -6,7 +6,7 @@ import './index.css';
 import { axios, HelmetProvider } from './utils/import.js';
 import { StoreProvider } from './utils/Store';
 
-axios.defaults.baseURL = 'http://localhost:8080';
+axios.defaults.baseURL = 'https://elisamazonapi.netlify.app';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
