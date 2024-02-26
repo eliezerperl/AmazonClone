@@ -6,7 +6,6 @@ import {
   Row,
   ListGroup,
 } from '../../../utils/import';
-import PayPalPayment from '../../payment/PayPalPayment';
 import MessageBox from '../messageBox/MessageBox';
 
 const OrderSummary = ({ cart, status, isDelivered }) => {
@@ -47,7 +46,7 @@ const OrderSummary = ({ cart, status, isDelivered }) => {
               <strong>Method: </strong>
               {cart.paymentMethod}
             </span>
-            <PayPalPayment cart={cart} />
+            {/* <PayPalPayment cart={cart} /> */}
             {/* ternary if stripe  */}
           </Card.Text>
           {status === 'submitOrder' ? (
