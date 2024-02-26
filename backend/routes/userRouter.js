@@ -6,4 +6,4 @@ const userRouter = Router();
 userRouter.post('/signup', expressAsyncHandler(signup));
 userRouter.post('/signin', expressAsyncHandler(signin));
 
-export default userRouter;
+module.exports = userRouter

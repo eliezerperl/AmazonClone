@@ -4,4 +4,4 @@ import seedData from '../controllers/seedController.js';
 const seedRouter = Router();
 seedRouter.get('/', seedData);
 
-export default seedRouter;
+module.exports = seedRouter;

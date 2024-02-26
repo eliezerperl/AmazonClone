@@ -12,4 +12,4 @@ orderRouter.post('/', isAuth, expressAsyncHandler(addOrder));
 orderRouter.get('/myorders', isAuth, expressAsyncHandler(getUsersOrders));
 orderRouter.get('/:id', isAuth, expressAsyncHandler(getOrderById));
 
-export default orderRouter;
+module.exports = orderRouter

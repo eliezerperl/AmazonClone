@@ -16,4 +16,4 @@ productRouter.get('/search', expressAsyncHandler(getSearchedItems));
 productRouter.get('/:id', expressAsyncHandler(getProduct));
 productRouter.get('/token/:token', expressAsyncHandler(getProductByToken));
 
-export default productRouter;
+module.exports = productRouter;
