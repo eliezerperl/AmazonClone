@@ -5,7 +5,7 @@ import cors from 'cors';
 
 import dotenv from 'dotenv';
 import productRouter from '../routes/productRouter';
-import seedRouter from '../routes/seedRouter';
+// import seedRouter from '../routes/seedRouter';
 import userRouter from '../routes/userRouter';
 import orderRouter from '../routes/orderRouter';
 
@@ -17,14 +17,14 @@ app.use(cors()); // does nothing at the moment
 app.use(express.json()); // parses JSON
 app.use(express.urlencoded({ extended: false }));
 
-const router = express.Router();
-router.get('/', (req, res) => {
-  res.send('App is running');
-});
-app.use('/.netlify/functions/api', router);
+// const router = express.Router();
+// router.get('/', (req, res) => {
+//   res.send('App is running');
+// });
+// app.use('/.netlify/functions/api', router);
 //middleware
 //routes:
-// app.use('/.netlify/functions/api/v1/seed', seedRouter);
+app.use('/.netlify/functions/api/v1/seed', seedRouter);
 app.use('/.netlify/functions/api/v1/products', productRouter);
 app.use('/.netlify/functions/api/v1/users', userRouter);
 app.use('/.netlify/functions/api/v1/orders', orderRouter);
@@ -34,13 +34,11 @@ app.use('/.netlify/functions/api/v1/orders', orderRouter);
 
 export const handler = serverless(app);
 
-// mongoose
-//   .connect(process.env.MONGO)
-//   .then(() => {
-//     app.listen(PORT, function () {
-//       console.log('listening on ' + PORT);
-//     });
-//   })
-//   .catch((err) => {
-//     console.log(err.message);
-//   });
+mongoose
+  .connect(process.env.MONGO)
+  .then(() => {
+    console.log('connected to db');
+  })
+  .catch((err) => {
+    console.log(err.message);
+  });
