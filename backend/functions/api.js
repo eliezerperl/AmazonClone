@@ -2,11 +2,12 @@ import express from 'express';
 import serverless from 'serverless-http';
 import cors from 'cors';
 import mongoose from 'mongoose';
-import seedRouter from './routes/seedRouter.js';
-import productRouter from './routes/productRouter.js';
-import userRouter from './routes/userRouter.js';
-import orderRouter from './routes/orderRouter.js';
+
 import dotenv from 'dotenv';
+import productRouter from '../routes/productRouter';
+import seedRouter from '../routes/seedRouter';
+import userRouter from '../routes/userRouter';
+import orderRouter from '../routes/orderRouter';
 
 dotenv.config();
 // const PORT = process.env.PORT || 8080;
