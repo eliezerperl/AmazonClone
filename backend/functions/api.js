@@ -17,6 +17,11 @@ app.use(cors()); // does nothing at the moment
 app.use(express.json()); // parses JSONs
 app.use(express.urlencoded({ extended: false }));
 
+const router = express.Router();
+router.get('/', (req, res) => {
+  res.send('App is running');
+});
+app.use('/.netlify/functions/api', router);
 //middleware
 //routes:
 app.use('/.netlify/functions/api/v1/seed', seedRouter);
