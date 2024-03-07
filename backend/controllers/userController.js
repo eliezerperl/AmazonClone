@@ -1,10 +1,10 @@
-import bcrypt from "bcryptjs";
-import User from "../models/User.js";
-import { generateToken } from '../utils/utils.js'
+const bcrypt = require('bcryptjs');
+const User = require('../models/User.js');
+const { generateToken } = require('../utils/utils.js');
 
 const signin = async (req, res) => {
   const { password: pwdFromWebsite, email } = req.body;
-  
+
   const user = await User.findOne({ email: email });
   if (user) {
     if (bcrypt.compareSync(pwdFromWebsite, user.password)) {
@@ -17,8 +17,8 @@ const signin = async (req, res) => {
       return;
     }
   }
-  res.status(401).send({ message: 'Invalid Credentials'})
-}
+  res.status(401).send({ message: 'Invalid Credentials' });
+};
 
 const signup = async (req, res) => {
   const { name, email, password } = req.body;
@@ -37,6 +37,6 @@ const signup = async (req, res) => {
     email: user.email,
     token: generateToken(user),
   });
-}
+};
 
-export { signin, signup };
+module.exports = { signin, signup };

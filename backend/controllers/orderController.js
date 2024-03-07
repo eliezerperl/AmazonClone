@@ -1,6 +1,6 @@
-import Order from '../models/Order.js';
+const Order = require('../models/Order.js');
 
-export const addOrder = async (req, res) => {
+const addOrder = async (req, res) => {
   const newOrder = new Order({
     orderItems: req.body.orderItems.map((item) => ({
       ...item,
@@ -19,7 +19,7 @@ export const addOrder = async (req, res) => {
   res.status(201).send({ message: 'Order added successfully', order });
 };
 
-export const getOrderById = async (req, res) => {
+const getOrderById = async (req, res) => {
   const { id } = req.params;
   const order = await Order.findById(id);
   if (order) {
@@ -29,7 +29,7 @@ export const getOrderById = async (req, res) => {
   }
 };
 
-export const getUsersOrders = async (req, res) => {
+const getUsersOrders = async (req, res) => {
   const orders = await Order.find({
     user: req.user._id,
   });
@@ -39,3 +39,9 @@ export const getUsersOrders = async (req, res) => {
     res.status(404).send({ message: 'Orders not found' });
   }
 };
+
+module.exports = {
+  addOrder,
+  getOrderById,
+  getUsersOrders,
+}

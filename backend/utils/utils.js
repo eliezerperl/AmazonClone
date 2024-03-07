@@ -1,12 +1,12 @@
-import jwt from 'jsonwebtoken';
+const jwt = require('jsonwebtoken');
 
-export const generateToken = ({ _id, name, email }) => {
+const generateToken = ({ _id, name, email }) => {
   return jwt.sign({ _id, name, email }, process.env.JWT_SECRET, {
     expiresIn: '7d',
   });
 };
 
-export const isAuth = (req, res, next) => {
+const isAuth = (req, res, next) => {
   const auth = req.headers.authorization;
   if (auth) {
     const token = req.headers.authorization.split(' ')[1];
@@ -17,6 +17,10 @@ export const isAuth = (req, res, next) => {
         next();
       }
     });
-  }
-  else res.status(401).send({ message: 'No Token'})
+  } else res.status(401).send({ message: 'No Token' });
+};
+
+module.exports = {
+  generateToken,
+  isAuth,
 };

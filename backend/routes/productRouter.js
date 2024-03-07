@@ -1,12 +1,13 @@
-import { Router } from 'express';
-import expressAsyncHandler from 'express-async-handler';
-import {
+const { Router } = require('express');
+const expressAsyncHandler = require('express-async-handler');
+const {
   getProducts,
   getProduct,
   getProductByToken,
   getCategories,
   getSearchedItems,
-} from '../controllers/productController.js';
+} = require('../controllers/productController.js');
+
 
 const productRouter = Router();
 productRouter.get('/', expressAsyncHandler(getProducts));

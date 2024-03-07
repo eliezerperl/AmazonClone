@@ -1,4 +1,4 @@
-import Product from '../models/Product.js';
+const Product = require('../models/Product.js');
 
 const getProducts = async (req, res) => {
   const products = await Product.find();
@@ -106,7 +106,7 @@ const getSearchedItems = async (req, res) => {
   });
 };
 
-export {
+module.exports = {
   getProducts,
   getProduct,
   getProductByToken,

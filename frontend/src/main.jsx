@@ -8,8 +8,11 @@ import { StoreProvider } from './utils/Store';
 
 axios.defaults.baseURL = import.meta.env.DEV
   ? 'http://localhost:8080'
+  : import.meta.env.VITE_PLATFORM === 'vercel'
+  ? ''
   : 'https://elisamazonapi.netlify.app/.netlify/functions';
 console.log(import.meta.env.DEV);
+console.log(import.meta.env.VITE_PLATFORM);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>

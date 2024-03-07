@@ -1,11 +1,12 @@
-import { Router } from 'express';
-import expressAsyncHandler from 'express-async-handler';
-import { isAuth } from '../utils/utils.js';
-import {
+const { Router } = require('express');
+const expressAsyncHandler = require('express-async-handler');
+const { isAuth } = require('../utils/utils.js');
+const {
   addOrder,
   getOrderById,
   getUsersOrders,
-} from '../controllers/orderController.js';
+} = require('../controllers/orderController.js');
+
 
 const orderRouter = Router();
 orderRouter.post('/', isAuth, expressAsyncHandler(addOrder));

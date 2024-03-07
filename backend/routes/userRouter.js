@@ -1,6 +1,6 @@
-import { Router } from "express";
-import expressAsyncHandler from "express-async-handler";
-import { signin, signup } from "../controllers/userController.js";
+const { Router } = require('express');
+const expressAsyncHandler = require('express-async-handler');
+const { signin, signup } = require('../controllers/userController.js');
 
 const userRouter = Router();
 userRouter.post('/signup', expressAsyncHandler(signup));
