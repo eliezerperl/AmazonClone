@@ -9,7 +9,7 @@ import { StoreProvider } from './utils/Store';
 axios.defaults.baseURL = import.meta.env.DEV
   ? 'http://localhost:8080'
   : import.meta.env.VITE_PLATFORM === 'vercel'
-  ? ''
+  ? 'https://amazon-clone-orcin-xi.vercel.app'
   : 'https://elisamazonapi.netlify.app/.netlify/functions';
 console.log(import.meta.env.DEV);
 console.log(import.meta.env.VITE_PLATFORM);
