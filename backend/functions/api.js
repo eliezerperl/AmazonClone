@@ -17,22 +17,15 @@ app.use(cors()); // does nothing at the moment
 app.use(express.json()); // parses JSON
 app.use(express.urlencoded({ extended: false }));
 
-// const router = express.Router();
-// router.get('/', (req, res) => {
-//   res.send('App is running');
-// });
-// app.use('/.netlify/functions/api', router);
 //middleware
 //routes:
 // app.use('/.netlify/functions/api/v1/seed', seedRouter);
 app.use('/.netlify/functions/api/v1/products', productRouter);
 app.use('/.netlify/functions/api/v1/users', userRouter);
 app.use('/.netlify/functions/api/v1/orders', orderRouter);
-// app.use((err, req, res, next) => {
-//   res.status(500).send({ message: err.message });
-// });
-
-export const handler = serverless(app);
+app.use((err, req, res, next) => {
+  res.status(500).send({ message: err.message });
+});
 
 mongoose
   .connect(process.env.MONGO)
@@ -42,3 +35,6 @@ mongoose
   .catch((err) => {
     console.log(err.message);
   });
+
+export const handler = serverless(app);
+
