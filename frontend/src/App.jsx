@@ -16,6 +16,7 @@ import Order from './pages/order/Order';
 import Search from './pages/search/Search';
 import { PayPalScriptProvider } from '@paypal/react-paypal-js';
 import MyOrders from './pages/order/MyOrders';
+import { Analytics } from '@vercel/analytics/react';
 
 function App() {
   const initialOptions = {
@@ -27,6 +28,8 @@ function App() {
 
   return (
     <>
+      <Analytics />
+
       <PayPalScriptProvider options={initialOptions}>
         <BrowserRouter>
           <div className="d-flex flex-column side-allPage min-width">
